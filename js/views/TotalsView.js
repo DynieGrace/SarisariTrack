@@ -7,7 +7,7 @@ class TotalsView extends View {
 
   _bentaEl = document.querySelector("#total-benta");
   _tuboEl = document.querySelector("#total-tubo");
-  _marginEl = document.querySelector("#total-margin");
+  _bestSellingProductEl = document.querySelector("#total-best-selling-product");
   _countEl = document.querySelector("#total-count");
   _dateLabel = document.querySelector("#viewing-date");
   _dateInput = document.querySelector("#active-date");
@@ -37,16 +37,17 @@ class TotalsView extends View {
     return items.map((row) => this._generateMarkupRow(row)).join("");
   };
 
-  renderSummary({ benta, tubo, margin, count, date }) {
+  renderSummary({ benta, tubo, bestSellingProduct, count, date }) {
     this._bentaEl.textContent = peso(benta);
     this._tuboEl.textContent = peso(tubo);
-    this._marginEl.textContent = `${margin.toFixed(1)}%`;
+    this._bestSellingProductEl.textContent = bestSellingProduct
+      ? `${bestSellingProduct.item} (${bestSellingProduct.qty})`
+      : "—";
     this._countEl.textContent =
       count === 1 ? "1 sale" : `${count} sales`;
     this._dateLabel.textContent = formatDate(date);
 
     this._tuboEl.classList.toggle("stat--neg", tubo < 0);
-    this._marginEl.classList.toggle("stat--neg", margin < 0);
   }
 
   syncControls({ activeDate, sortBy }) {
@@ -72,4 +73,3 @@ class TotalsView extends View {
 }
 
 export default new TotalsView();
-

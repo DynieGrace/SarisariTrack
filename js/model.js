@@ -192,6 +192,10 @@ export const getTotals = (date = state.activeDate) => {
 
   const benta = sales.reduce((sum, s) => sum + s.qty * s.price, 0);
   const tubo = sales.reduce((sum, s) => sum + s.qty * (s.price - s.cost), 0);
+  const bestSellingProduct = [...byItem.values()].reduce(
+    (best, item) => (!best || item.qty > best.qty ? item : best),
+    null,
+  );
 
   return {
     date,
@@ -199,6 +203,7 @@ export const getTotals = (date = state.activeDate) => {
     benta,
     tubo,
     margin: benta === 0 ? 0 : (tubo / benta) * 100,
+    bestSellingProduct,
     items,
   };
 };
