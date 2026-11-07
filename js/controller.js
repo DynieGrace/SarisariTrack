@@ -69,6 +69,7 @@ const controlTotalsSort = (key) => {
 };
 
 const controlTotalsRefresh = () => {
+  model.loadFormStorage();
   refreshAll();
 };
 
