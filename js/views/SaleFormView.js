@@ -30,7 +30,7 @@ class SaleFormView extends View {
     const label = item || "This item";
     const cls = tubo < 0 ? "preview preview--warn" : "preview preview--ok";
 
-    return `<span class="${cls}">${label} x${qty} = ${peso(benta)} benta, ${peso(tubo)} tubo</span>`;
+    return `<span class="${cls}">${label} x${qty} = Sales: ${peso(benta)}, Profit: ${peso(tubo)}</span>`;
   }
 
   syncForm({ editingId, sales, activeDate }) {
@@ -98,4 +98,3 @@ class SaleFormView extends View {
 }
 
 export default new SaleFormView();
-

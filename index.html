@@ -12,8 +12,8 @@
     <header class="masthead">
       <h1 class="masthead__title">SarisariTrack</h1>
       <p class="masthead__tagline">
-        Daily sales record for a sari-sari store. Log what sold, and the benta and
-        tubo work themselves out.
+        Daily sales records for a sari-sari store. Log what sold, and your sales
+        and profit are calculated automatically.
       </p>
     </header>
 
@@ -77,15 +77,24 @@
 
           <label class="field">
             <span class="field__label">Date</span>
-            <input class="field__input" id="sale-date" name="date" type="date" />
+            <input
+              class="field__input"
+              id="sale-date"
+              name="date"
+              type="date"
+            />
           </label>
 
           <p class="line-preview" id="line-preview" aria-live="polite"></p>
           <p class="error" id="sale-error" role="alert" hidden></p>
 
           <div class="form__actions">
-            <button class="button" id="sale-submit" type="submit">Add sale</button>
-            <button class="link" id="sale-cancel" type="button" hidden>Cancel</button>
+            <button class="button" id="sale-submit" type="submit">
+              Add sale
+            </button>
+            <button class="link" id="sale-cancel" type="button" hidden>
+              Cancel
+            </button>
           </div>
         </form>
       </section>
@@ -93,7 +102,9 @@
       <section class="panel" aria-labelledby="totals-heading">
         <div class="panel__header">
           <h2 class="panel__heading" id="totals-heading">Totals</h2>
-          <button class="link" id="totals-refresh" type="button">Refresh</button>
+          <button class="link" id="totals-refresh" type="button">
+            Refresh
+          </button>
         </div>
 
         <div class="day-bar">
@@ -106,11 +117,11 @@
 
         <div class="stats">
           <div class="stat">
-            <span class="stat__label">Benta</span>
+            <span class="stat__label">Sales</span>
             <span class="stat__value" id="total-benta">₱0.00</span>
           </div>
           <div class="stat">
-            <span class="stat__label">Tubo</span>
+            <span class="stat__label">Profit</span>
             <span class="stat__value" id="total-tubo">₱0.00</span>
           </div>
           <div class="stat">
@@ -128,8 +139,8 @@
           <label class="field field--inline">
             <span class="field__label">Sort by</span>
             <select class="field__input field__input--small" id="totals-sort">
-              <option value="tubo">Tubo</option>
-              <option value="benta">Benta</option>
+              <option value="tubo">Profit</option>
+              <option value="benta">Sales</option>
               <option value="qty">Quantity</option>
             </select>
           </label>
@@ -140,12 +151,11 @@
             <tr>
               <th scope="col">Item</th>
               <th scope="col" class="num">Qty</th>
-              <th scope="col" class="num">Benta</th>
-              <th scope="col" class="num">Tubo</th>
+              <th scope="col" class="num">Sales</th>
+              <th scope="col" class="num">Profit</th>
             </tr>
           </thead>
-          <tbody id="totals-body">
-          </tbody>
+          <tbody id="totals-body"></tbody>
         </table>
       </section>
 
@@ -158,13 +168,12 @@
               <th scope="col">Item</th>
               <th scope="col" class="num">Qty</th>
               <th scope="col" class="num">Price</th>
-              <th scope="col" class="num">Benta</th>
-              <th scope="col" class="num">Tubo</th>
+              <th scope="col" class="num">Sales</th>
+              <th scope="col" class="num">Profit</th>
               <th scope="col"><span class="visually-hidden">Actions</span></th>
             </tr>
           </thead>
-          <tbody id="sales-body">
-          </tbody>
+          <tbody id="sales-body"></tbody>
         </table>
       </section>
     </main>
