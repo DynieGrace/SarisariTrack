@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SarisariTrack</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+
+  <body>
+    <header class="masthead">
+      <h1 class="masthead__title">SarisariTrack</h1>
+      <p class="masthead__tagline">
+        Daily sales record for a sari-sari store. Log what sold, and the benta and
+        tubo work themselves out.
+      </p>
+    </header>
+
+    <main class="layout">
+      <section class="panel" aria-labelledby="form-heading">
+        <h2 class="panel__heading" id="form-heading">Record a sale</h2>
+
+        <form class="form" id="sale-form" novalidate>
+          <label class="field">
+            <span class="field__label">Item</span>
+            <input
+              class="field__input"
+              id="sale-item"
+              name="item"
+              type="text"
+              placeholder="e.g. Kape (3-in-1)"
+              autocomplete="off"
+            />
+          </label>
+
+          <div class="form__row form__row--three">
+            <label class="field">
+              <span class="field__label">Qty</span>
+              <input
+                class="field__input"
+                id="sale-qty"
+                name="qty"
+                type="number"
+                min="1"
+                step="1"
+                inputmode="numeric"
+              />
+            </label>
+
+            <label class="field">
+              <span class="field__label">Price</span>
+              <input
+                class="field__input"
+                id="sale-price"
+                name="price"
+                type="number"
+                min="0"
+                step="0.01"
+                inputmode="decimal"
+              />
+            </label>
+
+            <label class="field">
+              <span class="field__label">Cost</span>
+              <input
+                class="field__input"
+                id="sale-cost"
+                name="cost"
+                type="number"
+                min="0"
+                step="0.01"
+                inputmode="decimal"
+              />
+            </label>
+          </div>
+
+          <label class="field">
+            <span class="field__label">Date</span>
+            <input class="field__input" id="sale-date" name="date" type="date" />
+          </label>
+
+          <p class="line-preview" id="line-preview" aria-live="polite"></p>
+          <p class="error" id="sale-error" role="alert" hidden></p>
+
+          <div class="form__actions">
+            <button class="button" id="sale-submit" type="submit">Add sale</button>
+            <button class="link" id="sale-cancel" type="button" hidden>Cancel</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel" aria-labelledby="totals-heading">
+        <div class="panel__header">
+          <h2 class="panel__heading" id="totals-heading">Totals</h2>
+          <button class="link" id="totals-refresh" type="button">Refresh</button>
+        </div>
+
+        <div class="day-bar">
+          <label class="field field--inline">
+            <span class="field__label">Day</span>
+            <input class="field__input" id="active-date" type="date" />
+          </label>
+          <p class="day-bar__label" id="viewing-date"></p>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <span class="stat__label">Benta</span>
+            <span class="stat__value" id="total-benta">₱0.00</span>
+          </div>
+          <div class="stat">
+            <span class="stat__label">Tubo</span>
+            <span class="stat__value" id="total-tubo">₱0.00</span>
+          </div>
+          <div class="stat">
+            <span class="stat__label">Margin</span>
+            <span class="stat__value" id="total-margin">0.0%</span>
+          </div>
+          <div class="stat">
+            <span class="stat__label">Entries</span>
+            <span class="stat__value" id="total-count">0 sales</span>
+          </div>
+        </div>
+
+        <div class="panel__subheader">
+          <h3 class="panel__subheading">Per item</h3>
+          <label class="field field--inline">
+            <span class="field__label">Sort by</span>
+            <select class="field__input field__input--small" id="totals-sort">
+              <option value="tubo">Tubo</option>
+              <option value="benta">Benta</option>
+              <option value="qty">Quantity</option>
+            </select>
+          </label>
+        </div>
+
+        <table class="table table--totals">
+          <thead>
+            <tr>
+              <th scope="col">Item</th>
+              <th scope="col" class="num">Qty</th>
+              <th scope="col" class="num">Benta</th>
+              <th scope="col" class="num">Tubo</th>
+            </tr>
+          </thead>
+          <tbody id="totals-body">
+          </tbody>
+        </table>
+      </section>
+
+      <section class="panel panel--wide" aria-labelledby="log-heading">
+        <h2 class="panel__heading" id="log-heading">Sales for the day</h2>
+
+        <table class="table table--log">
+          <thead>
+            <tr>
+              <th scope="col">Item</th>
+              <th scope="col" class="num">Qty</th>
+              <th scope="col" class="num">Price</th>
+              <th scope="col" class="num">Benta</th>
+              <th scope="col" class="num">Tubo</th>
+              <th scope="col"><span class="visually-hidden">Actions</span></th>
+            </tr>
+          </thead>
+          <tbody id="sales-body">
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>ITPFE 1, Web Systems and Technologies 2. Prelim Project.</p>
+    </footer>
+
+    <script type="module" src="./js/controller.js"></script>
+  </body>
+</html>
