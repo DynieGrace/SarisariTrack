@@ -70,6 +70,7 @@ const controlTotalsSort = (key) => {
 
 const controlTotalsRefresh = () => {
   model.loadFormStorage();
+  model.canceledit();
   refreshAll();
 };
 
