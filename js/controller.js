@@ -69,10 +69,11 @@ const controlTotalsSort = (key) => {
 };
 
 const controlTotalsRefresh = () => {
-  model.loadFormStorage();
-  model.canceledit();
+  model.loadFromStorage();
+  model.cancelEditSale();
   refreshAll();
 };
+
 
 const renderTotals = () => {
   const totals = model.getTotals();
